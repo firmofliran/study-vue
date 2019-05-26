@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--slot插槽学习  绑定事件中比如v-bind:mydiv="aa" 后面的都是new Vue里面的，前面的是Vue.component(）里面的-->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<div id="app" >
+    <my>
+        <mydiv slot="mydiv" v-bind:mydiv="title"></mydiv>
+        <myli slot="myli" v-for="ar in arr" v-bind:myli="ar"></myli>
+    </my>
+
+</div>
+ <script>
+     Vue.component("my",{
+         template:"<div>\
+                        <slot name='mydiv'></slot>\
+                        <ul>\
+                        <slot name='myli'></slot>\
+                        </ul>\
+             </div>"
+     })
+     Vue.component("mydiv",{
+         props:['mydiv'],
+         template:"<div>{{mydiv}}</div>"
+     })
+     Vue.component("myli",{
+         props:['myli'],
+         template:"<li style='background: gray'>{{myli}}</li>"
+     })
+     var v=new Vue({
+         el:"#app",
+         data:{
+             title:"标题",
+             arr:['张三','李四','王五']
+         }
+     })
+
+ </script>
+</body>
+</html>

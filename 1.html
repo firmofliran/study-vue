@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--v-model,v-bind-->
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<div id="app" style="margin: 0 auto;width: 400px">
+<select v-model="select">
+    <option disabled value="请选择" >请选择</option>
+    <option>河南</option>
+    <option>上海</option>
+    <option>北京</option>
+</select>
+    <input type="text" v-model="select">
+
+    <br><textarea name="" id="" cols="30" rows="10">
+        {{select}}
+    </textarea>
+
+    <ul>
+        <myli v-for="ar in arr" v-bind:a="ar"></myli>
+    </ul>
+
+</div>
+ <script>
+     Vue.component("myli",{
+         props:['a'],
+         template:"<li>{{a}}</li>"
+     })
+     var v=new Vue({
+         el:"#app",
+         data:{
+             select:'aaa',
+             arr:[1,21,32]
+         }
+     })
+
+ </script>
+</body>
+</html>
